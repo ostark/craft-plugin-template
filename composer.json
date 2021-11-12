@@ -24,7 +24,8 @@
     },
     "require": {
         "php": "7.4 | ^8.0",
-        "craftcms/cms": "^3.5"
+        "craftcms/cms": "^3.5",
+        "treeware/plant": "*"
     },
     "require-dev": {
         "nunomaduro/collision": "^5.10",
@@ -50,11 +51,14 @@
         "sort-packages": true
     },
     "extra": {
+        "treeware": {},
         "name": ":package_name",
         "handle": ":plugin_handle",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/:vendor_slug/:package_slug/main/CHANGELOG.md"
+        "changelogUrl": "https://raw.githubusercontent.com/:vendor_slug/:package_slug/main/CHANGELOG.md",
+        "class": "VendorName\\Skeleton\\SkeletonPlugin"
+
     },
     "minimum-stability": "dev",
     "prefer-stable": true
