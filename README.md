@@ -10,7 +10,8 @@ This repo can be used to scaffold a Craft plugin. Follow these steps to get star
 2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files
 3. Remove this block of text.
 
-(Most parts of this template are stolen from [Spatie's Laravel skeleton](https://github.com/spatie/package-skeleton-laravel))
+(Most parts of this template are stolen from [Spatie's PHP skeleton](https://github.com/spatie/package-skeleton-php))
+
 ---
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
