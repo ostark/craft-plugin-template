@@ -6,6 +6,8 @@ use VendorName\Skeleton\SkeletonSettings;
 
 /**
  * What the fuck is a handler?
+ * Why a dedicated classs?
+ * How to test this?
  *
  */
 class SkeletonHandler

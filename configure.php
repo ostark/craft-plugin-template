@@ -126,14 +126,6 @@ foreach ($files as $file) {
         ':package_description' => $description,
     ]);
 
-
-
-    match (true) {
-        str_contains($file, 'src/SkeletonPlugin.php') => rename($file, './src/' . $className . '.php'),
-        str_contains($file, 'src/Commands/SkeletonCommand.php') => rename($file, './src/Commands/' . $className . 'Command.php'),
-        str_contains($file, 'database/migrations/SkeletonInstall.php') => rename($file, './database/migrations/Install.php'),
-        default => [],
-    };
 }
 
 confirm('Execute `composer install` and run tests?') && run('composer install && composer test');
