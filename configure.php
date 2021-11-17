@@ -58,7 +58,7 @@ function remove_prefix(string $prefix, string $content): string {
     return $content;
 }
 
-function findFilesWithTokens($tokens = ":author|:vendor|:package|VendorName|skeleton|vendor_name|vendor_slug|author@domain.com"): array {
+function findFilesWithTokens($tokens = ":author|:vendor|:package|VendorName|skeleton|vendor_name|vendor_slug|plugin_license|author@domain.com"): array {
     return explode(PHP_EOL, run('grep -E -r -l -i "'.$tokens.'" --exclude-dir=vendor ./* ./.github/* | grep -v ' . basename(__FILE__)));
 }
 
@@ -87,6 +87,8 @@ $pluginHandle = remove_prefix('craft-', $packageSlug);
 $className = title_case($packageName);
 $className = ask('Class name', $className);
 $description = ask('Plugin description', "This is my plugin {$packageSlug}");
+$pluginLicense = ask('Plugin license (MIT or proprietary)', 'MIT');
+
 
 writeln('------');
 writeln("Author        : {$authorName} ({$authorUsername}, {$authorEmail})");
@@ -95,6 +97,9 @@ writeln("Package       : {$packageSlug} <{$description}>");
 writeln("Namespace     : {$vendorNamespace}\\{$className}");
 writeln("Class name    : {$className}");
 writeln("Plugin handle : {$pluginHandle}");
+writeln("Plugin license: {$pluginLicense}");
+
+
 writeln('------');
 
 writeln('This script will replace the above values in all relevant files in the project directory.');
@@ -112,18 +117,19 @@ $fileMap = [
 
 foreach ($files as $file) {
     replace_in_file($file, [
-        ':author_name' => $authorName,
-        ':author_username' => $authorUsername,
+        'author_name' => $authorName,
+        'author_username' => $authorUsername,
         'author@domain.com' => $authorEmail,
-        ':vendor_name' => $vendorName,
-        ':vendor_slug' => $vendorSlug,
+        'vendor_name' => $vendorName,
+        'vendor_slug' => $vendorSlug,
         'VendorName' => $vendorNamespace,
-        ':package_name' => $packageName,
-        ':package_slug' => $packageSlug,
-        ':plugin_handle' => $pluginHandle,
+        'package_name' => $packageName,
+        'package_slug' => $packageSlug,
+        'plugin_handle' => $pluginHandle,
+        'plugin_license' => $pluginLicense,
         'Skeleton' => $className,
         'skeleton' => $packageSlug,
-        ':package_description' => $description,
+        'package_description' => $description,
     ]);
 
 }
