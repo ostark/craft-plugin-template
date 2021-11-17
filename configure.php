@@ -131,7 +131,14 @@ foreach ($files as $file) {
         'skeleton' => $packageSlug,
         'package_description' => $description,
     ]);
+}
 
+if ($pluginLicense === 'MIT') {
+    unlink('LICENSE_CRAFT.md');
+    rename('LICENSE_MIT.md', 'LICENSE.md');
+} else {
+    unlink('LICENSE_MIT.md');
+    rename('LICENSE_CRAFT', 'LICENSE.md');
 }
 
 confirm('Execute `composer install` and run tests?') && run('composer install && composer test');
