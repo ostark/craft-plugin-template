@@ -141,6 +141,6 @@ if ($pluginLicense === 'MIT') {
     rename('LICENSE_CRAFT', 'LICENSE.md');
 }
 
-confirm('Execute `composer install` and run tests?') && run('composer install && composer test');
+confirm('Execute `composer install` and run tests?') && run('php composer install && php composer test');
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
