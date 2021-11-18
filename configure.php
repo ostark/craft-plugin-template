@@ -141,6 +141,9 @@ if ($pluginLicense === 'MIT') {
     rename('LICENSE_CRAFT', 'LICENSE.md');
 }
 
-confirm('Execute `composer install` and run tests?') && run('php composer install && php composer test');
+$php = $_SERVER['_'] ?? 'php';
+$composer = file_exists('/usr/local/bin/composer') ? '/usr/local/bin/composer' : 'composer';
+
+confirm('Execute `composer install` and run tests?') && run("$php $composer  install && $php $composer test");
 
 confirm('Let this script delete itself?', true) && unlink(__FILE__);
