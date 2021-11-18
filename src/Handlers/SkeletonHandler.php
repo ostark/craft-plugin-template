@@ -2,7 +2,7 @@
 
 namespace VendorName\Skeleton\Handlers;
 
-use VendorName\Skeleton\SkeletonSettings;
+use VendorName\Skeleton\Settings;
 
 /**
  * What the fuck is a handler?
@@ -12,9 +12,9 @@ use VendorName\Skeleton\SkeletonSettings;
  */
 class SkeletonHandler
 {
-    protected SkeletonSettings $settings;
+    protected Settings $settings;
 
-    public function __construct(SkeletonSettings $settings)
+    public function __construct(Settings $settings)
     {
         $this->settings = $settings;
     }

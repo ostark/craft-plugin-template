@@ -1,11 +1,10 @@
 <?php
 
-namespace VendorName\Skeleton\Handlers;
+namespace VendorName\Skeleton\Services;
 
 use craft\services\Config;
-use craft\services\Elements;
 use VendorName\Skeleton\SkeletonPlugin;
-use VendorName\Skeleton\SkeletonSettings;
+use VendorName\Skeleton\Settings;
 use yii\base\Application;
 
 /**
@@ -18,9 +17,9 @@ class SkeletonService
 
     protected Config $craftConfig;
 
-    protected SkeletonSettings $settings;
+    protected Settings $settings;
 
-    public function __construct(Config $craftConfig, SkeletonSettings $settings)
+    public function __construct(Config $craftConfig, Settings $settings)
     {
         $this->craftConfig = $craftConfig;
         $this->settings = $settings;

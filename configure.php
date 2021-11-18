@@ -109,11 +109,6 @@ if (! confirm('Modify files?', true)) {
 }
 
 $files = findFilesWithTokens();
-$fileMap = [
-    'src/SkeletonPlugin.php' => "src/$className.php",
-    'src/SkeletonXXX.php' => "src/$className.php",
-    'config.example.php' => "$pluginHandle.example.php",
-];
 
 foreach ($files as $file) {
     replace_in_file($file, [
@@ -131,6 +126,18 @@ foreach ($files as $file) {
         'skeleton' => $packageSlug,
         'package_description' => $description,
     ]);
+}
+
+$fileMap = [
+    'src/SkeletonPlugin.php' => "src/$className.php",
+    'src/SkeletonSettings.php' => "src/Settings.php",
+    'src/Services/SkeletonService.php' => "src/Services/FooService.php",
+    'src/Handlers/SkeletonHandler.php' => "src/Handlers/FooHandler.php",
+
+];
+
+foreach ($fileMap as $src => $target) {
+    rename($src, $target);
 }
 
 if ($pluginLicense === 'MIT') {
